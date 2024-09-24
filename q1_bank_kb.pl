@@ -20,7 +20,7 @@ month(7). month(8). month(9). month(10). month(11). month(12).
 %%%%% You should put the atomic statements in your KB below in this section
 
 
-hasAccount(ada_lovelace, cibc, 4000).
+hasAccount(ada_lovelace, cibc, 7000).
 hasAccount(alan_turing, cibc, 3000).
 hasAccount(boba_fett, scotiabank, 200).
 hasAccount(boba_fett, bmo, 300).
