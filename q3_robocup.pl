@@ -3,9 +3,9 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
-%%%%% NAME:
-%%%%% NAME:
+%%%%% NAME: Subha Tasnim
+%%%%% NAME: Bemenet Bekele
+%%%%% NAME: Michael Abd Elsayed
 %
 % Add the required rules in the corresponding sections. 
 % If you put the rules in the wrong sections, you will lose marks.
@@ -35,13 +35,14 @@ pathClear(r5, r6).
 %%%%% You may also define helper predicates in this section
 %%%%% DO NOT PUT ATOMIC FACTS for robot, hasBall, or pathClear below.
 
-canPass(R1, R2, M):- not R1 = net, not R2 = net, pathClear(R1, R2), M >= 1.
-canPass(R1, R2, M):- not R1 = net, not R2 = net, pathClear(R1, R3), M1 is M-1, M1 >= 1, canPass(R3, R2, M1).
-canPass(R1, R2, M):- not R1 = net, not R2 = net, pathClear(R2, R1), M >= 1.
-canPass(R1, R2, M):- not R1 = net, not R2 = net, pathClear(R3, R1), M1 is M-1, M1 >= 1, canPass(R3, R2, M1).
+validPass(R1, R2):- robot(R1), robot(R2), pathClear(R1, R2).
+validPass(R1, R2):- robot(R1), robot(R2), pathClear(R2, R1).
+
+canPass(R1, R2, M):- validPass(R1, R2), M >= 1.
+canPass(R1, R2, M):- validPass(R1, R3), M >= 2, M1 is M - 1, M1 >= 1, canPass(R3, R2, M1).
 
 canScore(R, M):- hasBall(R), pathClear(R, net), M >= 1.
-canScore(R, M):- hasBall(R2), M1 is M-1, M1 >= 1, canPass(R2, R, M1), pathClear(R, net).
+canScore(R, M):- hasBall(R2), M >= 2, M1 is M - 1, M1 >= 1, canPass(R2, R, M1), pathClear(R, net).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
