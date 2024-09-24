@@ -3,7 +3,7 @@
 % If you only have 2 group members, leave the last space blank
 %
 %%%%%
-%%%%% NAME: 
+%%%%% NAME: Subha Tasnim
 %%%%% NAME:
 %%%%% NAME:
 %
@@ -20,50 +20,200 @@
 
 %%%%%% QUERY 1: Does Ada Lovelace live in San Francisco?
 
-
+?- lives(ada_lovelace, san_francisco).
 
 %%%%%% QUERY 2: What is the balance of Alan Turing's account with CIBC?
 
-
+?- hasAccount(alan_turing, cibc, Balance).
 
 %%%%%% QUERY 3: Does anyone have an account at both BMO and Scotiabank, and if so, who is it?
 
-
+?- hasAccount(Person, bmo, Balance1), hasAccount(Person, scotiabank, Balance2).
 
 %%%%%% QUERY 4: Is there a person with an account at Wells Fargo that does not live in New York?
 
-
+?- hasAccount(Person, wells_fargo, Balance), not lives(Person, new_york).
 
 %%%%%% QUERY 5: Does anyone who opened an account with CIBC in April 2018 have more than 5000 in their CIBC account?
 
-
+?- created(Person, cibc, 4, 2018), hasAccount(Person, cibc, Balance), Balance > 5000.
 
 %%%%%% QUERY 6: Does any bank have more than one person who opened an account in January 2024?
 
-
+?- created(P1, Bank, 1, 2024), created(P2, Bank, 1, 2024), not P1 = P2.
 
 %%%%%% QUERY 7: Did any person living outside of Winnipeg open more than one account in the same year?
 
-
+?- created(Person, Bank1, M1, Y), created(Person, Bank2, M2, Y), not Bank1 = Bank2, not lives(Person, winnipeg).
 
 %%%%%% QUERY 8: Is there a month in 2017 in which no one opened an account at the National Bank of Canada?
 
-
+?- month(Month), not created(P, national_bank_of_canada, Month, 2017).
 
 %%%%%% QUERY 9: Did anyone open 3 different accounts in 3 consecutive years?
 
-
+?- created(Person, Bank1, M1, Y1), created(Person, Bank2, M2, Y2), created(Person, Bank3, M3, Y3), Y2 is Y1+1, Y3 is Y2+1. 
 
 %%%%%% QUERY 10: Who opened the oldest account ever opened at BMO?
  
-
+?- created(Person, bmo, M1, Y1), not (created(P2, bmo, M2, Y2), Y2 < Y1), not (created(P2, bmo, M2, Y2), Y2 = Y1, M2 < M1).
 
 %%%%%% QUERY 11: Who has the largest account created at CIBC in 2010 or later, of anyone who lives in Toronto?
 
-
+?- lives(Person, toronto), hasAccount(Person, cibc, Balance), created(Person, cibc, M, Y), Y >= 2010, not (lives(P2, toronto), hasAccount(P2, cibc, Bal2), created(P2, cibc, M2, Y2), Y2 >= 2010, Bal2 >= Balance, not Person = P2).
 
 
 %%%%% INTERACTION
 %
 % Add your interaction below.
 % 
+% ?- lives(ada_lovelace, san_francisco).
+% Yes (0.00s cpu)
+%
+% ?- hasAccount(alan_turing, cibc, Balance).
+% Balance = 3000
+% Yes (0.00s cpu)
+%
+% ?- hasAccount(Person, bmo, Balance1), hasAccount(Person, scotiabank, Balance2).
+% Person = boba_fett
+% Balance1 = 300
+% Balance2 = 200
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% No (0.00s cpu)
+%
+% ?- hasAccount(Person, wells_fargo, Balance), not lives(Person, new_york).
+%
+% Person = naruto_uzumaki
+% Balance = 3000
+% Yes (0.00s cpu)
+%
+% ?- created(Person, cibc, 4, 2018), hasAccount(Person, cibc, Balance), Balance > 5000.
+%
+% Person = ada_lovelace
+% Balance = 7000
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% Person = sasuke_uchiha
+% Balance = 6000
+% Yes (0.00s cpu, solution 2)
+%
+% ?- created(P1, Bank, 1, 2024), created(P2, Bank, 1, 2024), not P1 = P2.
+%
+% P1 = boba_fett
+% Bank = scotiabank
+% P2 = rick_morty
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% P1 = rick_morty
+% Bank = scotiabank
+% P2 = boba_fett
+% Yes (0.01s cpu, solution 2, maybe more) ? ;
+%
+% No (0.01s cpu)
+%
+% ?- created(Person, Bank1, M1, Y), created(Person, Bank2, M2, Y), not Bank1 = Bank2, not lives(Person, winnipeg).
+%
+% Person = anakin_skywalker
+% Bank1 = td
+% M1 = 4
+% Y = 2024
+% Bank2 = national_bank_of_canada
+% M2 = 9
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% Person = anakin_skywalker
+% Bank1 = national_bank_of_canada
+% M1 = 9
+% Y = 2024
+% Bank2 = td
+% M2 = 4
+% Yes (0.00s cpu, solution 2, maybe more) ? ;
+%
+% No (0.00s cpu)
+%
+% ?- month(Month), not created(P, national_bank_of_canada, Month, 2017).
+%
+% Month = 1
+% P = P
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% Month = 3
+% P = P
+% Yes (0.00s cpu, solution 2, maybe more) ? ;
+%
+% Month = 4
+% P = P
+% Yes (0.00s cpu, solution 3, maybe more) ? ;
+%
+% Month = 5
+% P = P
+% Yes (0.00s cpu, solution 4, maybe more) ? ;
+%
+% Month = 6
+% P = P
+% Yes (0.00s cpu, solution 5, maybe more) ? ;
+%
+% Month = 7
+% P = P
+% Yes (0.00s cpu, solution 6, maybe more) ? ;
+%
+% Month = 8
+% P = P
+% Yes (0.00s cpu, solution 7, maybe more) ? ;
+%
+% Month = 9
+% P = P
+% Yes (0.00s cpu, solution 8, maybe more) ? ;
+%
+% Month = 10
+% P = P
+% Yes (0.00s cpu, solution 9, maybe more) ? ;
+%
+% Month = 11
+% P = P
+% Yes (0.00s cpu, solution 10, maybe more) ? ;
+%
+% Month = 12
+% P = P
+% Yes (0.00s cpu, solution 11)
+%
+% ?- created(Person, Bank1, M1, Y1), created(Person, Bank2, M2, Y2), created(Person, Bank3, M3, Y3), Y2 is Y1+1, Y3 is Y2+1. 
+%
+% Person = boba_fett
+% Bank1 = wells_fargo
+% M1 = 4
+% Y1 = 2022
+% Bank2 = bmo
+% M2 = 1
+% Y2 = 2023
+% Bank3 = scotiabank
+% M3 = 1
+% Y3 = 2024
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% No (0.00s cpu)
+%
+% ?- created(Person, bmo, M1, Y1), not (created(P2, bmo, M2, Y2), Y2 < Y1), not (created(P2, bmo, M2, Y2), Y2 = Y1, M2 < M1).
+%
+% Person = anakin_skywalker
+% M1 = 3
+% Y1 = 2001
+% P2 = P2
+% M2 = M2
+% Y2 = Y2
+% Yes (0.00s cpu)
+%
+% ?- lives(Person, toronto), hasAccount(Person, cibc, Balance), created(Person, cibc, M, Y), Y >= 2010, not (lives(P2, toronto), hasAccount(P2, cibc, Bal2), created(P2, cibc, M2, Y2), Y2 >= 2010, Bal2 >= Balance, not Person = P2).
+%
+% Person = alan_turing
+% Balance = 3000
+% M = 4
+% Y = 2019
+% P2 = P2
+% Bal2 = Bal2
+% M2 = M2
+% Y2 = Y2
+% Yes (0.00s cpu, solution 1, maybe more) ? ;
+%
+% No (0.00s cpu)
