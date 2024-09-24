@@ -35,6 +35,11 @@ pathClear(r5, r6).
 %%%%% You may also define helper predicates in this section
 %%%%% DO NOT PUT ATOMIC FACTS for robot, hasBall, or pathClear below.
 
+canPass(R1, R2, 1) :- (pathClear(R1, R2); pathClear(R2, R1)), robot(R1), robot(R2).
+canPass(R1, R2, M) :-  M > 1, (pathClear(R1, R3); pathClear(R3, R1)), robot(R1), robot(R3), robot(R2), R1 \= R3, R3 \= R2, M1 is M - 1, canPass(R3, R2, M1).
+
+canScore(R1, 1) :- pathClear(R1, net), robot(R1).
+canScore(R1, M) :- M > 1, (pathClear(R1, R2); pathClear(R2, R1)), robot(R1), robot(R2), M1 is M - 1, canPass(R1, R2, M1), canScore(R1, 1).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
