@@ -18,51 +18,57 @@
 % Don't forget to end queries with a period.
 
 %%%%%% QUERY 1
-% EXPLANATION: 
-
+% EXPLANATION: checks if r1 can directly pass the ball to r2
+canPass(r1, r2, 1).
 
 
 %%%%%% QUERY 2
-% EXPLANATION: 
-
+% EXPLANATION: checks if r5 can directly pass the ball to r6
+canPass(r5, r6, 1).
 
 
 %%%%%% QUERY 3
-% EXPLANATION: 
+% EXPLANATION: checks if r1 can pass the ball to r4 in at most 2 touches
+canPass(r1, r4, 2).
 
 
 
 %%%%%% QUERY 4
-% EXPLANATION: 
+% EXPLANATION: checks if r4 can pass the ball to r5 in at most 2 touches
+canPass(r4, r5, 2).
 
 
 
 %%%%%% QUERY 5
-% EXPLANATION: 
+% EXPLANATION: checks if r1 can score a direct goal
+canScore(r1, 1).
 
 
 
 %%%%%% QUERY 6
-% EXPLANATION: 
+% EXPLANATION: checks if r3 can score a direct goal
+canScore(r3, 1).
 
 
 
 %%%%%% QUERY 7
-% EXPLANATION: 
+% EXPLANATION: checks if r4 can score a direct goal
+canScore(r4, 1).
 
 
 
 %%%%%% QUERY 8
-% EXPLANATION: 
-
+% EXPLANATION: checks if r4 can score a goal if the number of touches are at most 3
+canScore(r4, 3).
 
 
 %%%%%% QUERY 9
-% EXPLANATION: 
-
+% EXPLANATION: checks if r1 can score a goal if the number of touches are at most 4
+canScore(r1, 4).
 
 %%%%%% QUERY 10
-% EXPLANATION: 
+% EXPLANATION: checks if r5 can score with the most number of touches being 6
+canScore(r5, 6).
 
 
 
@@ -74,3 +80,32 @@
 %
 % Add your interaction below.
 % 
+% ?- canPass(r1, r2, 1).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canPass(r5, r6, 1).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canPass(r1, r4, 2).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canPass(r4, r5, 2).
+% No (0.00s cpu)
+% 
+% ?- canScore(r1, 1).
+% No (0.00s cpu)
+% 
+% ?- canScore(r3, 1).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canScore(r4, 1).
+% No (0.00s cpu)
+% 
+% ?- canScore(r4, 3).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canScore(r1, 4).
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- canScore(r5, 6).
+% No (0.00s cpu)
