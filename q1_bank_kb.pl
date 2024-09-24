@@ -48,7 +48,7 @@ lives(judy_hopps, zootopia).
 lives(jango_fett, kamino).
 
 
-created(ada_lovelace, cibc, 11, 2013).
+created(ada_lovelace, cibc, 4, 2018).
 created(alan_turing, cibc, 4, 2019).
 created(boba_fett, scotiabank, 1, 2024).
 created(boba_fett, bmo, 1, 2023).
