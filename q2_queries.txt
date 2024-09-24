@@ -18,52 +18,52 @@
 % Don't forget to end queries with a period.
 
 %%%%%% QUERY 1
-% EXPLANATION: 
-
+% EXPLANATION: Check the subtotal of jhon at CIBC before interest and penalty
+subtotal(john, cibc, Subtotal).
 
 
 %%%%%% QUERY 2
-% EXPLANATION: 
-
+% EXPLANATION: Check the subtotal of mary at BMO before interest and penalty
+subtotal(mary, bmo, Subtotal).
 
 
 %%%%%% QUERY 3
-% EXPLANATION: 
-
+% EXPLANATION: Checks the accured interest for john at CIBC
+accuredInterest(john, cibc, Interest).
 
 
 %%%%%% QUERY 4
-% EXPLANATION: 
-
+% EXPLANATION: Checks the accured interest for mary at BMO
+accuredInterest(mary, bmo, Interest).
 
 
 %%%%%% QUERY 5
-% EXPLANATION: 
-
+% EXPLANATION: Checks this months penalty for john at CIBC
+accuredPenalty(john, cibc, Penalty).
 
 
 %%%%%% QUERY 6
-% EXPLANATION: 
-
+% EXPLANATION: Checks this months penalty for mary at BMO
+accuredPenalty(mary, bmo, Penalty).
 
 
 %%%%%% QUERY 7
-% EXPLANATION: 
-
+% EXPLANATION: Johns total at CIBC after interests and penalties
+endOfMonthBalance(john, cibc, Balance).
 
 
 %%%%%% QUERY 8
-% EXPLANATION: 
-
+% EXPLANATION: Johns total at BMO after interests and penalties
+endOfMonthBalance(john, bmo, Balance).
 
 
 %%%%%% QUERY 9
-% EXPLANATION: 
-
+% EXPLANATION: Marys total at CIBC after interests and penalties
+endOfMonthBalance(mary, cibc, Balance).
 
 %%%%%% QUERY 10
-% EXPLANATION: 
-
+% EXPLANATION: Marys total at BMO after interests and penalties
+endOfMonthBalance(mary, bmo, Balance).
 
 
 %%%%%% YOU MAY CHOOSE TO ADD MORE THAN 10 QUERIES HERE
@@ -73,4 +73,48 @@
 %%%%% INTERACTION
 %
 % Add your interaction below.
+%
 % 
+% ?- subtotal(john, cibc, Subtotal).
+% Subtotal = 3500
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- subtotal(mary, bmo, Subtotal).
+% Subtotal = -500
+% Yes (0.00s cpu)
+% 
+% ?- accuredInterest(john, cibc, Interest).
+% Interest = 17.5
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- accuredInterest(mary, bmo, Interest).
+% Interest = 0
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- accuredPenalty(john, cibc, Penalty).
+% Penalty = 0
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- accuredPenalty(mary, bmo, Penalty).
+% Penalty = 50
+% Yes (0.00s cpu)
+% 
+% ?- endOfMonthBalance(john, cibc, Balance).
+% Balance = 3517.5
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- endOfMonthBalance(john, bmo, Balance).
+% Balance = 8568.0
+% Yes (0.00s cpu, solution 1, maybe more)
+%
+% ?- endOfMonthBalance(mary, cibc, Balance).
+% Balance = 5527.5
+% Yes (0.00s cpu, solution 1, maybe more)
+% 
+% ?- endOfMonthBalance(mary, bmo, Balance).
+% Balance = -550
+% Yes (0.00s cpu, solution 1, maybe more)
+%
+%
+%
+% QUERY RESULTS COPIED FROM ECLIPSE 6.1 GUI.
